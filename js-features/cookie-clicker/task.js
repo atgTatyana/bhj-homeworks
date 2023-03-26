@@ -11,9 +11,11 @@ elementCookie.onclick = function() {
 	time = clickTime;
 	clickCounter += 1;
 	elementCounter.textContent = clickCounter;
-	if (elementCookie.width === 200) {
-		elementCookie.width = 250;
-	} else {
-		elementCookie.width = 200;
-	}
+	
+	elementCookie.width = elementCounter.textContent % 2 ? 250 : 200;
+	// if (elementCookie.width === 200) {
+	// 	elementCookie.width = 250;
+	// } else {
+	// 	elementCookie.width = 200;
+	// }
 };

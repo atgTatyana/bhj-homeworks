@@ -4,11 +4,12 @@ let moleDead = Number(elementDead.textContent);
 let moleLost = Number(elementLost.textContent);
 
 const getHole = index => document.getElementById(`hole${index}`); 
-function finish() {
+function finish(text) {
 	moleDead = 0;
 	moleLost = 0;
 	elementDead.textContent = moleDead;
 	elementLost.textContent = moleLost;
+	alert(text);
 }
 
 for (let i = 1; i <= 9; i++) {
@@ -18,15 +19,13 @@ for (let i = 1; i <= 9; i++) {
 			moleDead += 1;
 			elementDead.textContent = moleDead;
 			if (moleDead === 10) {
-				finish();
-				alert('Вы победили!')
+				finish('Вы победили!');
 			}
 		} else {
 			moleLost += 1;
 			elementLost.textContent = moleLost;
 			if (moleLost === 5) {
-				finish();
-				alert('Вы проиграли...')
+				finish('Вы проиграли...');
 			}
 		}
 	}
