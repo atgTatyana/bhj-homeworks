@@ -1,16 +1,18 @@
-const elementModal_main = document.getElementById('modal_main');
-elementModal_main.className = 'modal modal_active';
-
+const ModalMain = document.getElementById('modal_main');
+const ModalSuccess = document.getElementById('modal_success');
 const elementClose = document.querySelectorAll('.modal__close');
+const elementSuccess = document.querySelector('.show-success');
+
+ModalMain.className = 'modal modal_active';
+
 for (element of elementClose) {
 	element.onclick = function() {
-		elementModal_main.className = 'modal';
-		elementModal_success.className = 'modal';
-	}
+		ModalMain.className = 'modal';
+		ModalSuccess.className = 'modal';
+	};
 }
 
-const elementSuccess = document.querySelector('.show-success');
-const elementModal_success = document.getElementById('modal_success');
 elementSuccess.onclick = function() {
-	elementModal_success.className = 'modal modal_active';
-}
+	ModalMain.className = 'modal';
+	ModalSuccess.className = 'modal modal_active';
+};
