@@ -11,3 +11,8 @@
   color: #fff;
 }
 
+.timer {
+  text-align: right;
+  font-weight: bold;
+  font-size: 30px;
+}
