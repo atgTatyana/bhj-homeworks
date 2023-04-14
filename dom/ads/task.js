@@ -13,11 +13,12 @@ for (let rotator of rotators) {
 		
 		setTimeout(() => {
 			rotatorCases[indexActiveEl].classList.remove('rotator__case_active');
-			if (indexActiveEl === rotatorCases.length - 1) {
-				rotatorCases[0].classList.add('rotator__case_active');
-			} else {
-				rotatorCases[indexActiveEl + 1].classList.add('rotator__case_active');
-			}
+			rotatorCases[(indexActiveEl + 1) % rotatorCases.length].classList.add('rotator__case_active');
+			// if (indexActiveEl === rotatorCases.length - 1) {
+			// 	rotatorCases[0].classList.add('rotator__case_active');
+			// } else {
+			// 	rotatorCases[indexActiveEl + 1].classList.add('rotator__case_active');
+			// }
 			changeText();
 		}, timer[indexActiveEl]);
 	}
