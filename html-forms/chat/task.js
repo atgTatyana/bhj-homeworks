@@ -49,24 +49,25 @@ setInterval(() => {
 	}
 }, 1000);
 
-input.addEventListener('input', () => {
-	actionTime = new Date();
-})
-
 input.addEventListener('keyup', (e) => {
-	if (e.key === 'Enter') {		
-		messages.innerHTML += `
-			<div class="message message_client">
-				<div class="message__time">${getTime()}</div>
-				<div class="message__text">${input.value}</div>
-			</div>`;
-		input.value = '';
+	if (e.key === 'Enter') {	
+		if (input.value.trim() !== '') {
+			messages.innerHTML += `
+				<div class="message message_client">
+					<div class="message__time">${getTime()}</div>
+					<div class="message__text">${input.value.trim()}</div>
+				</div>`;
 
-		messages.innerHTML += `
-			<div class="message">
-				<div class="message__time">${getTime()}</div>
-				<div class="message__text">${robotMessages[Math.floor(Math.random() * robotMessages.length)]}</div>
-			</div>`;
+			messages.innerHTML += `
+				<div class="message">
+					<div class="message__time">${getTime()}</div>
+					<div class="message__text">${robotMessages[Math.floor(Math.random() * robotMessages.length)]}</div>
+				</div>`;
+		}
+
+		input.value = '';
 	}
+
+	actionTime = new Date();
 	scrollHeight();
 })
