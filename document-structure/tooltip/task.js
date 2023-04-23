@@ -6,13 +6,13 @@ aAll.forEach(a => {
 	tooltip.setAttribute('class', 'tooltip');
 
 	const {x, width} = a.getBoundingClientRect();
-	if (Number(x.toFixed()) < 150) {
-		tooltip.dataset.position = 'bottom';
-	} else if (Number((window.innerWidth - x - width).toFixed()) < 150) {
+	// if (Number(x.toFixed()) < 150) {
+		// tooltip.dataset.position = 'bottom';
+	// } else if (Number((window.innerWidth - x - width).toFixed()) < 150) {
 		tooltip.dataset.position = 'left';
-	} else {
-		tooltip.dataset.position = 'top';
-	}
+	// } else {
+		// tooltip.dataset.position = 'top';
+	// }
 
 	a.insertAdjacentElement("afterend", tooltip);
 })
