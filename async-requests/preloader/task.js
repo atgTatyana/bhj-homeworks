@@ -1,5 +1,5 @@
 let currencyArr = [];
-if (localStorage.length) {
+if (localStorage.length && localStorage.getItem('key')) {
 	document.getElementById('loader').classList.remove('loader_active');
 	// преобразует формат JSON (строку) в массив объектов
 	currencyArr = JSON.parse(localStorage.getItem('key'));
