@@ -14,24 +14,26 @@ signinBtn.addEventListener('click', (e) => {
 
 	const xhr = new XMLHttpRequest();
 
-	xhr.addEventListener('readystatechange', () => {
-		if (xhr.readyState === xhr.DONE) {
-			const serverResponse = JSON.parse(xhr.responseText);
-			console.log(serverResponse);
+	xhr.addEventListener('load', () => {
+		const serverResponse = xhr.response;
+		console.log(serverResponse);
 
-			if (serverResponse.success) {
-				localStorage.setItem('user_id', serverResponse.user_id);
-				setWelcome(serverResponse.user_id);
+		if (serverResponse.success) {
+			localStorage.setItem('user_id', serverResponse.user_id);
+			setWelcome(serverResponse.user_id);
 
-			} else {
-				signinForm.querySelectorAll('.control').forEach(el => el.value = '');
-				alert('Неверный логин/пароль');
-			}
+		} else {
+			signinForm.reset();		// сброс всех элементов формы
+			alert('Неверный логин/пароль');
 		}
 	})
 
 	let formData = new FormData(signinForm);
 	xhr.open('POST', 'https://students.netoservices.ru/nestjs-backend/auth');
+
+	// чтобы не парсить ответ сервера, в xhr.response будет уже готовый объект:
+	xhr.responseType = 'json';
+
 	xhr.send(formData);
 })
 
@@ -45,8 +47,8 @@ function setWelcome(id) {
 logoutBtn.addEventListener('click', (e) => {
 	e.preventDefault();
 
-	localStorage.clear();
+	localStorage.removeItem('user_id');
 	welcome.classList.remove('welcome_active');
 	signin.classList.add('signin_active');
-	signinForm.querySelectorAll('.control').forEach(el => el.value = '');
+	signinForm.reset();
 })
